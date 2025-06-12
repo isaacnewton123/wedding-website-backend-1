@@ -43,7 +43,9 @@ const guestEntrySchema = new mongoose.Schema({
 const GuestEntry = mongoose.model('GuestEntry', guestEntrySchema);
 
 // Middleware
-app.use(cors()); // Mengizinkan CORS untuk pengembangan frontend
+app.use(cors({
+    origin: /^https:\/\/(?:.+\.)?isaacnewton\.store$/ // Izinkan semua subdomain dari isaacnewton.store
+}));
 app.use(bodyParser.json()); // Untuk mengurai JSON dari body request
 
 // Data sementara (gunakan database di produksi) - Dihapus
